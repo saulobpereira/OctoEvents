@@ -3,8 +3,8 @@ package tech.jaya.octo.endpoints
 import io.javalin.apibuilder.ApiBuilder.post
 import io.javalin.apibuilder.EndpointGroup
 import tech.jaya.octo.endpoints.model.IssueRequest
-import tech.jaya.octo.model.Action
-import tech.jaya.octo.model.IssueEntity
+import tech.jaya.octo.repository.Action
+import tech.jaya.octo.repository.IssueEntity
 import tech.jaya.octo.service.OctoService
 
 class WebhookEndpoints(val octoService: OctoService): EndpointGroup {
