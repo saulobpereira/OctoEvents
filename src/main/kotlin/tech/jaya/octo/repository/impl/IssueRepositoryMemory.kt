@@ -1,6 +1,6 @@
 package tech.jaya.octo.repository.impl
 
-import tech.jaya.octo.model.IssueEntity
+import tech.jaya.octo.repository.IssueEntity
 import tech.jaya.octo.repository.IssueRepository
 
 class IssueRepositoryMemory: IssueRepository {
