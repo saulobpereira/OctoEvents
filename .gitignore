@@ -27,6 +27,7 @@ hs_err_pid*
 
 \.idea/
 
-out/production/classes/META-INF/
+out/
 
 gradle/wrapper/
+
