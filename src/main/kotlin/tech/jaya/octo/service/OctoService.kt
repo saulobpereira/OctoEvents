@@ -2,10 +2,12 @@ package tech.jaya.octo.service
 
 import tech.jaya.octo.repository.Action
 import tech.jaya.octo.repository.IssueEntity
-import tech.jaya.octo.repository.impl.IssueRepositoryMemory
+import tech.jaya.octo.repository.IssueRepository
 
-class OctoService {
-    private val issueRepository = IssueRepositoryMemory()
+class OctoService(
+        private val issueRepository: IssueRepository
+) {
+
 
     fun getEventsByNumber(number: Int): String{
         return issueRepository.getAllByNumber(number).toString()

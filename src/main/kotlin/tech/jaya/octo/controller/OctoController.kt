@@ -5,11 +5,15 @@ import io.javalin.Javalin
 import io.javalin.json.FromJsonMapper
 import io.javalin.json.JavalinJson
 import io.javalin.json.ToJsonMapper
-import tech.jaya.octo.repository.EventsEndpoints
+import tech.jaya.octo.endpoints.EventsEndpoints
+import tech.jaya.octo.endpoints.WebhookEndpoints
+import tech.jaya.octo.repository.impl.IssueRepositoryMemory
+import tech.jaya.octo.service.OctoService
 
 class OctoController {
     fun startAplication(){
-        val octoService = OctoService()
+        val issueRepository = IssueRepositoryMemory()
+        val octoService = OctoService(issueRepository)
         val app = Javalin.create().start(7000)
 
         configureJsonMapper()
