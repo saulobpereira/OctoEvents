@@ -4,5 +4,5 @@ interface IssueRepository {
 
     fun save(issueEntity: IssueEntity)
     fun getAllByNumber(number: Int): List<IssueEntity>
-    fun getAllByAction(action: Action): List<IssueEntity>
+    fun getAll(): List<IssueEntity>
 }

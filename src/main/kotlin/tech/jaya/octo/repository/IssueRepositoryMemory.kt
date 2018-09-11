@@ -10,7 +10,7 @@ class IssueRepositoryMemory:IssueRepository {
         return issues.filter { it.number == number }
     }
 
-    override fun getAllByAction(action: Action): List<IssueEntity> {
-        return issues.filter { it.action == action }
+    override fun getAll(): List<IssueEntity> {
+        return issues
     }
 }

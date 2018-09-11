@@ -7,11 +7,10 @@ import io.javalin.json.JavalinJson
 import io.javalin.json.ToJsonMapper
 import tech.jaya.octo.repository.Action
 import tech.jaya.octo.repository.IssueEntity
-import tech.jaya.octo.repository.IssueRepositoryMemory
 
 
 fun main(args: Array<String>) {
-    val issueRepository = IssueRepositoryMemory()
+    val octoService = OctoService()
     val app = Javalin.create().start(7000)
 
     val gson = GsonBuilder().create()
@@ -25,19 +24,14 @@ fun main(args: Array<String>) {
 
     app.get("/issues/:event_number/events") { ctx ->
         val number = ctx.pathParam("event_number").toInt()
-        ctx.result(issueRepository.getAllByNumber(number).toString())
+        ctx.result(octoService.getEventsByNumber(number))
     }
     app.get("/issues/statistics") { ctx ->
-        ctx.result("{\n" +
-            "\"open\": ${issueRepository.getAllByAction(Action.OPENED).size},\n" +
-            "\"closed\": ${issueRepository.getAllByAction(Action.CLOSED).size},\n" +
-            "\"reopened\": ${issueRepository.getAllByAction(Action.REOPENED).size}\n" +
-            "}")
+        ctx.result(octoService.getStatistics())
     }
     app.post("/issue"){ ctx ->
         val request = ctx.bodyAsClass(IssueRequest::class.java)
-        println("Saving:\n ${request} ")
-        issueRepository.save(issueRequestAsIssueEntity(request))
+        octoService.saveIssueEvent(issueRequestAsIssueEntity(request))
     }
 }
 
