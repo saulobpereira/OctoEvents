@@ -1,6 +1,9 @@
-package tech.jaya.octo.repository
+package tech.jaya.octo.repository.impl
 
-class IssueRepositoryMemory:IssueRepository {
+import tech.jaya.octo.model.IssueEntity
+import tech.jaya.octo.repository.IssueRepository
+
+class IssueRepositoryMemory: IssueRepository {
     var issues = mutableListOf<IssueEntity>()
     override fun save(issueEntity: IssueEntity) {
         issues.add(issueEntity)
