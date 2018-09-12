@@ -1,6 +1,9 @@
+
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.2.61'
 }
+apply plugin: 'application'
+mainClassName = "tech.jaya.octo.OctoApplication"
 
 group 'tech.jaya'
 version '1.0-SNAPSHOT'

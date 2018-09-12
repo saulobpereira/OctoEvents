@@ -1,8 +1,12 @@
 package tech.jaya.octo
 
-
-fun main(args: Array<String>) {
-    OctoController().startAplication()
+class OctoApplication{
+    companion object {
+        @JvmStatic
+        fun main(args: Array<String>) {
+            OctoController().startAplication()
+        }
+    }
 }
 
 
