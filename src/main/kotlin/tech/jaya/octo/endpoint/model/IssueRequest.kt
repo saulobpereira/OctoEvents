@@ -1,4 +1,4 @@
-package tech.jaya.octo.endpoints.model
+package tech.jaya.octo.endpoint.model
 
 import com.google.gson.annotations.SerializedName
 import java.util.*

@@ -1,4 +1,4 @@
-package tech.jaya.octo.repository
+package tech.jaya.octo.model
 
 enum class Action {
     OPENED,

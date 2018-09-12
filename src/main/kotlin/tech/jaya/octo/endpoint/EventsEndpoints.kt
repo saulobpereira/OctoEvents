@@ -1,4 +1,4 @@
-package tech.jaya.octo.endpoints
+package tech.jaya.octo.endpoint
 
 import io.javalin.apibuilder.ApiBuilder.get
 import io.javalin.apibuilder.ApiBuilder.path

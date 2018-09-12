@@ -1,8 +1,8 @@
 package tech.jaya.octo.service
 
 import com.google.gson.GsonBuilder
-import tech.jaya.octo.repository.Action
-import tech.jaya.octo.repository.IssueEntity
+import tech.jaya.octo.model.Action
+import tech.jaya.octo.model.IssueEntity
 import tech.jaya.octo.repository.IssueRepository
 
 class OctoService(

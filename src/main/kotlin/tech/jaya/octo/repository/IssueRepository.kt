@@ -1,5 +1,7 @@
 package tech.jaya.octo.repository
 
+import tech.jaya.octo.model.IssueEntity
+
 interface IssueRepository {
 
     fun save(issueEntity: IssueEntity)

@@ -1,4 +1,4 @@
-package tech.jaya.octo
+package tech.jaya.octo.controller
 
 import com.google.gson.GsonBuilder
 import io.javalin.Javalin

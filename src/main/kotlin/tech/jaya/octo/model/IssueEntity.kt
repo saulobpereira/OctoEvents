@@ -1,4 +1,5 @@
-package tech.jaya.octo.repository
+package tech.jaya.octo.model
+
 
 import java.util.*
 
