@@ -1,5 +1,6 @@
 package tech.jaya.octo.service
 
+import com.google.gson.GsonBuilder
 import tech.jaya.octo.repository.Action
 import tech.jaya.octo.repository.IssueEntity
 import tech.jaya.octo.repository.IssueRepository
@@ -7,27 +8,21 @@ import tech.jaya.octo.repository.IssueRepository
 class OctoService(
         private val issueRepository: IssueRepository
 ) {
+    private val gson = GsonBuilder().create()
+
+    fun getEventsByNumber(number: Int): String = gson.toJson(issueRepository.getAllByNumber(number))
 
 
-    fun getEventsByNumber(number: Int): String{
-        return issueRepository.getAllByNumber(number).toString()
-    }
+    fun getStatistics(): String = gson.toJson(getActionCount(issueRepository.getAll()))
 
-    fun getStatistics(): String{
-        val count = getActionCount(issueRepository.getAll())
-        return "{\n" +
-                "\"open\": ${count[Action.OPENED]},\n" +
-                "\"closed\": ${count[Action.CLOSED]},\n" +
-                "}"
-    }
 
     fun saveIssueEvent(issueEntity: IssueEntity){
-        println("Saving:\n ${issueEntity} ")
+        println("Saving:\n $issueEntity ")
         issueRepository.save(issueEntity)
     }
 
     private fun getActionCount(issues: List<IssueEntity>): Map<Action, Int>{
-        var count = mutableMapOf(Action.CLOSED to 0, Action.OPENED to 0)
+        var count = mutableMapOf(Action.OPENED to 0, Action.CLOSED to 0)
         issues.groupBy { it.id }.forEach{
             when(it.value.maxBy { it.updatedAt!!.time }?.action){
                 Action.CLOSED -> count[Action.CLOSED] = 1 + count[Action.CLOSED]!!
