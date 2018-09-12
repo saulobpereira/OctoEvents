@@ -46,7 +46,7 @@ class OctoServiceTest {
 
     @Test
     fun `Return the statistics from the repository`() {
-        val expectedStatisticsResult = "{\"closed\":2,\"opened\":2}"
+        val expectedStatisticsResult = "{\"opened\":2,\"closed\":2}"
         whenever(issueRepository.getAll()).thenReturn(generateIssueEntityList())
         expect(octoService.getStatistics()).toBe(expectedStatisticsResult)
     }
