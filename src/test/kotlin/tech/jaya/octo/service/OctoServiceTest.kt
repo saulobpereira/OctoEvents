@@ -9,19 +9,19 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito
-import tech.jaya.octo.repository.Action
-import tech.jaya.octo.repository.IssueEntity
+import tech.jaya.octo.model.Action
+import tech.jaya.octo.model.IssueEntity
 import tech.jaya.octo.repository.IssueRepository
 import java.util.*
 
 class OctoServiceTest {
-    lateinit var octoService: OctoService
+    lateinit var octoService: OctoServiceImpl
     lateinit var issueRepository: IssueRepository
 
     @Before
     fun before() {
         issueRepository = mock { }
-        octoService = OctoService(issueRepository)
+        octoService = OctoServiceImpl(issueRepository)
     }
 
     @After

@@ -5,15 +5,17 @@ import io.javalin.Javalin
 import io.javalin.json.FromJsonMapper
 import io.javalin.json.JavalinJson
 import io.javalin.json.ToJsonMapper
-import tech.jaya.octo.endpoints.EventsEndpoints
-import tech.jaya.octo.endpoints.WebhookEndpoints
-import tech.jaya.octo.repository.impl.IssueRepositoryMemory
+import org.koin.standalone.KoinComponent
+import org.koin.standalone.inject
+import tech.jaya.octo.endpoint.EventsEndpoints
+import tech.jaya.octo.endpoint.WebhookEndpoints
 import tech.jaya.octo.service.OctoService
 
-class OctoController {
+class OctoController: KoinComponent {
+
+    private val octoService by inject<OctoService>()
+
     fun startAplication(){
-        val issueRepository = IssueRepositoryMemory()
-        val octoService = OctoService(issueRepository)
         val app = Javalin.create().start(7000)
 
         configureJsonMapper()
