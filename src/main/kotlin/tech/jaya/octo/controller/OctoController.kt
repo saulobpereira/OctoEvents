@@ -11,12 +11,15 @@ import tech.jaya.octo.endpoint.EventsEndpoints
 import tech.jaya.octo.endpoint.WebhookEndpoints
 import tech.jaya.octo.service.OctoService
 
-class OctoController: KoinComponent {
+class OctoController(private val port: Int): KoinComponent {
 
     private val octoService by inject<OctoService>()
 
-    fun startAplication(){
-        val app = Javalin.create().start(7000)
+    fun startAplication(): Javalin{
+        val app = Javalin.create().apply {
+            port(port)
+            exception(Exception::class.java) { e, _ -> e.printStackTrace() }
+        }.start()
 
         configureJsonMapper()
 
@@ -24,6 +27,7 @@ class OctoController: KoinComponent {
             EventsEndpoints(octoService).addEndpoints()
             WebhookEndpoints(octoService).addEndpoints()
         }
+        return app
     }
 
     private fun configureJsonMapper() {

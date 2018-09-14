@@ -9,7 +9,7 @@ class OctoApplication{
         fun main(args: Array<String>) {
 
             startKoin(listOf(octoModule))
-            OctoController().startAplication()
+            OctoController(7000).startAplication()
         }
     }
 }
