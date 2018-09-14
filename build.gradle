@@ -28,6 +28,7 @@ dependencies {
     testCompile group: 'com.nhaarman', name: 'mockito-kotlin', version: '1.6.0'
     testCompile group: 'com.nhaarman', name: 'expect.kt', version: '1.0.0'
     testCompile 'org.koin:koin-test:1.0.0-RC-3'
+    testCompile 'khttp:khttp:0.1.0'
 }
 
 compileKotlin {
