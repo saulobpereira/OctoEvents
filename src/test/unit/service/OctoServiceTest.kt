@@ -1,4 +1,4 @@
-package tech.jaya.octo.service
+package service
 
 import com.nhaarman.expect.expect
 import com.nhaarman.mockito_kotlin.mock
@@ -12,6 +12,7 @@ import org.mockito.Mockito
 import tech.jaya.octo.model.Action
 import tech.jaya.octo.model.IssueEntity
 import tech.jaya.octo.repository.IssueRepository
+import tech.jaya.octo.service.OctoServiceImpl
 import java.util.*
 
 class OctoServiceTest {

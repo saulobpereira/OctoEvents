@@ -1,4 +1,4 @@
-package tech.jaya.octo
+package controller
 
 import com.nhaarman.expect.expect
 import io.javalin.Javalin
@@ -16,7 +16,6 @@ import tech.jaya.octo.model.Action
 import tech.jaya.octo.model.IssueEntity
 import tech.jaya.octo.repository.IssueRepository
 import tech.jaya.octo.repository.impl.IssueRepositoryMemory
-import tech.jaya.octo.service.octoModuleTest
 import java.util.*
 
 class OctoIntegrationTest: KoinTest {
